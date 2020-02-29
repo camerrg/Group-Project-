@@ -11,7 +11,7 @@ import model.Attractions;
 
 public class AttractionsHelper {
 	
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(""); //put database in here
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("database-1"); //put database in here
 
 	public void insertNewAttractions(Attractions at) {
 		EntityManager em = emfactory.createEntityManager();

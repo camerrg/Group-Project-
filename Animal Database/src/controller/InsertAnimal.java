@@ -11,7 +11,7 @@ import model.Animals;
 
 public class InsertAnimal {
 	
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory(""); //put database in here
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("database-1"); //put database in here
 
 	public void insertAnimal(Animals a) {
 		EntityManager em = emfactory.createEntityManager();

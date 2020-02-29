@@ -1,7 +1,9 @@
+import java.time.LocalDate;
 import java.util.List;
 
 import controller.AttractionsHelper;
-
+import controller.InsertAnimal;
+import model.Animals;
 import model.Attractions;
 
 public class zooTester {
@@ -13,17 +15,27 @@ public class zooTester {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Attractions lion = new Attractions(0, "Lion", null, null);
+		Animals animal1 = new Animals("lion");
 		
-		AttractionsHelper ah = new AttractionsHelper();
+		InsertAnimal ah = new InsertAnimal();
 		
-		ah.insertNewAttractions(lion);
+		ah.insertAnimal(animal1);
 		
-		List<Attractions> allAttractions = ah.getAttractions();
+		AttractionsHelper ahh = new AttractionsHelper();
 		
-		for(Attractions a: allAttractions) {
+		Attractions animal1List = new Attractions("Animal 1 List", LocalDate.now(), animal1);
+		
+		ahh.insertNewAttractions(animal1List);
+		
+		List<Attractions> allAttractions = ahh.getAttractions();
+		
+		for(Attractions a : allAttractions) {
 			System.out.println(a.toString());
 		}
+		
+		
+		
+	
 		
 		
 		
