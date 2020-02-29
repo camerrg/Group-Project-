@@ -1,48 +1,60 @@
 package model;
 
-import java.util.Arrays;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "animals")
 public class Animals {
- private String [] Type;
- private int animalID;
- 	
- 
- public Animals() {
-	super();
-	// TODO Auto-generated constructor stub
-}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ManyToOne
+	@JoinColumn(name="ANIMAL_ID")
+	private int id;
+	@Column(name="ANIMAL_TYPE")
+	private String animalType;
 
+	public Animals() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-public String[] getType() {
-	return Type;
-}
+	public Animals(int id, String animalType) {
+		super();
+		this.id = id;
+		this.animalType = animalType;
+	}
 
+	public Animals(String animalType) {
+		super();
+		this.animalType = animalType;
+	}
 
-public void setType(String[] type) {
-	Type = type;
-}
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public int getAnimalID() {
-	return animalID;
-}
+	public String getAnimalType() {
+		return animalType;
+	}
 
+	public void setAnimalType(String animalType) {
+		this.animalType = animalType;
+	}
 
-public void setAnimalID(int animalID) {
-	this.animalID = animalID;
-}
-
-
-public Animals(String[] type, int animalID) {
-	super();
-	Type = type;
-	this.animalID = animalID;
-}
- 
-@Override
-public String toString() {
-	return "Animals [Type=" + Arrays.toString(Type) + ", animalID=" + animalID + "]";
-}
-	
+	@Override
+	public String toString() {
+		return "Animals [id=" + id + ", animalType=" + animalType + "]";
+	}
 
 }
