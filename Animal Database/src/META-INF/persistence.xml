@@ -4,6 +4,7 @@
 		<provider>jdbc:mysql://database-1.cwlw5o6ekwpt.us-east-2.rds.amazonaws.com:3306/zoo</provider>
 		<class>model.Attractions</class>
 		<class>model.Animals</class>
+		<class>controller.LocalDateAttributeConverter</class>
 	
 	<properties>
 	<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
