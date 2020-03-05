@@ -1,27 +1,23 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Attractions;
-
 /**
- * Servlet implementation class viewAllZooServlet
+ * Servlet implementation class ViewAllItemsServlet
  */
-@WebServlet("/viewAllZooServlet")
-public class viewAllZooServlet extends HttpServlet {
+@WebServlet("/viewAllItemsServlet")
+public class ViewAllItemsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllZooServlet() {
+    public ViewAllItemsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +27,7 @@ public class viewAllZooServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		AttractionsHelper ah = new AttractionsHelper();
-		
-		List<Attractions> abc = ah.getAttractions();
-		request.setAttribute(allLists, abc);
-		
-		if(abc.isEmpty()) {
-			request.setAttribute(allLists, " ");
-		}
-		getServletContext().getRequestDispatcher("/zoo-list.jsp").forward(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -47,7 +35,20 @@ public class viewAllZooServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		ListItemHelper dao = new ListItemHelper();
+		request.setAttribute("allItems", dao.showAllItems());
+		String path = "/shopping-list.jsp";
+		
+		if (dao.showAllItems().isEmpty()) {
+			path = "/index.html";
+		}
+		
+		
+		
+		getServletContext().getRequestDispatcher(path).forward(request, response);
+		// TODO Auto-generated method stub
+		
 	}
 
 }

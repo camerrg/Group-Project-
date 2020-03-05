@@ -7,35 +7,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ListItems;
+
+
 /**
- * Servlet implementation class viewAnimals
+ * Servlet implementation class AddItemServlet
  */
-@WebServlet("/viewAnimals")
-public class viewAnimals extends HttpServlet {
+@WebServlet("/addItemServlet")
+public class AddItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAnimals() {
+    public AddItemServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String animal = request.getParameter("animal");
+		String location = request.getParameter("location");
+		
+		ListItems li = new ListItems(animal, location);
+		ListItemHelper dao = new ListItemHelper();
+		dao.insertItem(li);
+		
+		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}
 
 }

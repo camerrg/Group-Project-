@@ -20,4 +20,3 @@ public class LocalDateAttributeConverter implements AttributeConverter<LocalDate
 		return (dbData == null ? null : dbData.toLocalDate());
 	}
 }
-

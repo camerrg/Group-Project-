@@ -5,35 +5,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "animals")
-public class Animals {
+public class Animal {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ManyToOne
-	@JoinColumn(name="ANIMAL_ID")
+	@Column(name = "animal_id")
 	private int id;
-	@Column(name="ANIMAL_TYPE")
+	@Column(name = "ANIMAL_TYPE")
 	private String animalType;
-
-	public Animals() {
+	
+	public Animal() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Animals(int id, String animalType) {
+	public Animal(int id, String animalType) {
 		super();
 		this.id = id;
 		this.animalType = animalType;
 	}
-
-	public Animals(String animalType) {
+	
+	public Animal(String animalType) {
 		super();
 		this.animalType = animalType;
+
 	}
 
 	public int getId() {
@@ -54,7 +53,12 @@ public class Animals {
 
 	@Override
 	public String toString() {
-		return "Animals [id=" + id + ", animalType=" + animalType + "]";
+		return "Animal [id=" + id + ", animalType=" + animalType + "]";
 	}
+	
+	
+	
+	
 
+	
 }
